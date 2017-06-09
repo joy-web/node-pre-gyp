@@ -417,7 +417,7 @@ describe('complex builds', function() {
                 run('npm', 'install', '--build-from-source --nodedir=invalid-value', app, {}, function(err,stdout,stderr) {
                     //assert.ok(err);
                     console.log(stdout);
-                    console.log(stder);
+                    console.log(stderr);
                     assert.ok(stdout.search(app.name+'.node') > -1);
                     assert.ok(stderr.indexOf('common.gypi not found' > -1));
                     done();
