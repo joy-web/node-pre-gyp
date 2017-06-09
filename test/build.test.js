@@ -405,6 +405,8 @@ describe('complex builds', function() {
             it(app.name + ' passes --nodedir down to node-gyp via node-pre-gyp ' + app.args, function(done) {
                 run('node-pre-gyp', 'configure', '--nodedir=invalid-value', app, {}, function(err,stdout,stderr) {
                     //assert.ok(err);
+                    console.log(stdout);
+                    console.log(stder);
                     assert.ok(stdout.search(app.name+'.node') > -1);
                     assert.ok(stderr.indexOf('common.gypi not found' > -1));
                     done();
@@ -414,6 +416,8 @@ describe('complex builds', function() {
             it(app.name + ' passes --nodedir down to node-gyp via npm' + app.args, function(done) {
                 run('npm', 'install', '--build-from-source --nodedir=invalid-value', app, {}, function(err,stdout,stderr) {
                     //assert.ok(err);
+                    console.log(stdout);
+                    console.log(stder);
                     assert.ok(stdout.search(app.name+'.node') > -1);
                     assert.ok(stderr.indexOf('common.gypi not found' > -1));
                     done();
