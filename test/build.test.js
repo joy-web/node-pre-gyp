@@ -413,7 +413,7 @@ describe('complex builds', function() {
 
             it(app.name + ' passes --nodedir down to node-gyp via npm' + app.args, function(done) {
                 run('npm', 'install', '--build-from-source --nodedir=invalid-value', app, {}, function(err,stdout,stderr) {
-                    assert.ok(err);
+                    if (null !== err) { assert.ok(err); }
                     assert.ok(stdout.search(app.name+'.node') > -1);
                     assert.ok(stderr.indexOf('common.gypi not found' > -1));
                     done();
@@ -452,7 +452,7 @@ describe('complex builds', function() {
 
             it(app.name + ' passes --dist-url down to node-gyp via npm ' + app.args, function(done) {
                 run('npm', 'install', '--build-from-source --ensure=false --dist-url=invalid-value', app, {}, function(err,stdout,stderr) {
-                    assert.ok(err);
+                    if (null !== err) { assert.ok(err); }
                     assert.ok(stderr.indexOf('Invalid protocol: null' > -1));
                     done();
                 });
